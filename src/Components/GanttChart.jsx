@@ -9,7 +9,7 @@ const GanttChart = ({ gantt }) => {
 
       <div
         key={gantt.map((g) => g.pid + g.start + g.end).join("-")}
-        className="flex relative w-full my-auto justify-center gap-4"
+        className="flex relative flex-wrap gap-y-10 w-full my-auto justify-center gap-4"
       >
         {gantt.map((p, i) => {
           return (
