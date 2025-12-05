@@ -1,6 +1,7 @@
 import React from "react";
+import selector from '../Algorithm/selector.js';
 
-export default function MetricsTable() {
+export default function MetricsTable({ metrics }) {
   return (
     <div className="col-span-3 border w-full rounded ">
       <table className=" border-collapse text-center w-full">
@@ -16,38 +17,18 @@ export default function MetricsTable() {
         </thead>
 
         <tbody className="text-lg">
-          <tr>
-            <td className="p-3">P1</td>
-            <td className="p-3">0</td>
-            <td className="p-3">5</td>
-            <td className="p-3">5</td>
-            <td className="p-3">5</td>
-            <td className="p-3">0</td>
-          </tr>
-          <tr>
-            <td className="p-3">P2</td>
-            <td className="p-3">1</td>
-            <td className="p-3">3</td>
-            <td className="p-3">9</td>
-            <td className="p-3">8</td>
-            <td className="p-3">5</td>
-          </tr>
-          <tr>
-            <td className="p-3">P3</td>
-            <td className="p-3">2</td>
-            <td className="p-3">8</td>
-            <td className="p-3">17</td>
-            <td className="p-3">15</td>
-            <td className="p-3">7</td>
-          </tr>
-          <tr>
-            <td className="p-3">P4</td>
-            <td className="p-3">3</td>
-            <td className="p-3">6</td>
-            <td className="p-3">23</td>
-            <td className="p-3">20</td>
-            <td className="p-3">14</td>
-          </tr>
+          {metrics.map((m, keyIndex) => {
+            return (
+              <tr key={keyIndex}>
+                <td className="p-3">{m.pid}</td>
+                <td className="p-3">{m.arrival}</td>
+                <td className="p-3">{m.burst}</td>
+                <td className="p-3">{m.completion}</td>
+                <td className="p-3">{m.tat}</td>
+                <td className="p-3">{m.wait}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

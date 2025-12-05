@@ -2,57 +2,35 @@ import React, { useState } from "react";
 import { BsDice5 } from "react-icons/bs";
 import { GoChevronDown } from "react-icons/go";
 
-export default function ProcessForm() {
-  const algorithm = [
-    {
-      name: "First Come First Serve, FCFS",
-      code: "fcfs",
-    },
-    {
-      name: "Shortest Job First, SJF (non-preemptive)",
-      code: "sjf",
-    },
-    {
-      name: "Shortest Remaining Time First, SRTF",
-      code: "srtf",
-    },
-    {
-      name: "Round-Robin, RR",
-      code: "rr",
-    },
-    {
-      name: "Priority",
-      code: "p",
-    },
-  ];
-  const [arrivalTime, setArrivalTime] = useState('');
-  const [burstTime, setBurstTime] = useState('');
-  const [algo, setAlgo] = useState(algorithm[0]);
+export default function ProcessForm({ process, setProcess, algo, setAlgo, algorithm }) {
+
+  const [arrivalTime, setArrivalTime] = useState([]);
+  const [burstTime, setBurstTime] = useState([]);
   const [timeQuantum, setTimeQuantum] = useState(0);
-  const [priorities, setPriorities] = useState('');
+  const [priorities, setPriorities] = useState([]);
   const randomProcess = () => {
     const numProcesses = Math.floor(Math.random() * 3) + 4;
     const at = [];
     const bt = [];
-    const pr= [];
-    for (let i = 0; i < numProcesses; i++){
+    const pr = [];
+    for (let i = 0; i < numProcesses; i++) {
       const randomAT = Math.floor(Math.random() * 11);
       const randomBT = Math.floor(Math.random() * 11);
       at.push(randomAT);
       bt.push(randomBT);
     }
-    setArrivalTime(at.join(' '));
-    setBurstTime(bt.join(' '));
-    if (algo.code === 'rr') {
+    setArrivalTime(at);
+    setBurstTime(bt);
+    if (algo.code === "rr") {
       const randomTQ = Math.floor(Math.random() * 4);
-      setTimeQuantum(randomTQ)
+      setTimeQuantum(randomTQ);
     }
-    if (algo.code === 'p') {
-      for (let i = 0; i < numProcesses; i++){
-      const randomPR = Math.floor(Math.random() * 9);
-      pr.push(randomPR);
-    }
-    setPriorities(pr.join(' '))
+    if (algo.code === "p") {
+      for (let i = 0; i < numProcesses; i++) {
+        const randomPR = Math.floor(Math.random() * 9);
+        pr.push(randomPR);
+      }
+      setPriorities(pr);
     }
   };
   return (
@@ -69,7 +47,21 @@ export default function ProcessForm() {
           </span>
         </div>
       </h2>
-      <InputForm arrivalTime={arrivalTime} setArrivalTime={setArrivalTime} burstTime={burstTime} setBurstTime={setBurstTime} algo={algo} setAlgo={setAlgo} timeQuantum={timeQuantum} setTimeQuantum={setTimeQuantum} algorithm={algorithm} setPriorities={setPriorities} priorities={priorities}/>
+      <InputForm
+        arrivalTime={arrivalTime}
+        setArrivalTime={setArrivalTime}
+        burstTime={burstTime}
+        setBurstTime={setBurstTime}
+        algo={algo}
+        setAlgo={setAlgo}
+        timeQuantum={timeQuantum}
+        setTimeQuantum={setTimeQuantum}
+        algorithm={algorithm}
+        setPriorities={setPriorities}
+        priorities={priorities}
+        process={process}
+        setProcess={setProcess}
+      />
     </div>
   );
 }
@@ -85,12 +77,44 @@ function InputForm({
   setTimeQuantum,
   algorithm,
   setPriorities,
-  priorities
+  priorities,
+  process,
+  setProcess,
 }) {
   const [showAlgo, setShowAlgo] = useState(false);
 
+  const handleSolve = (e) => {
+    e.preventDefault();
+    if (arrivalTime.length !== burstTime.length) {
+      alert("Number of Arrival Time is not same as Burst Time");
+      return;
+    }
+    const processList = [];
+    const numProcesses = arrivalTime.length;
+    for (let i = 0; i < numProcesses; i++) {
+      processList.push({
+        pid: `P${i}`,
+        arrival: arrivalTime[i],
+        burst: burstTime[i],
+        completion: 0,
+        priority: 0,
+      });
+    }
+    if (algo.code === "p") {
+      if (arrivalTime.length !== priorities.length) {
+        alert("Number of Priorities is not same as PID");
+        return;
+      }
+      for (let i = 0; i < numProcesses; i++) {
+        processList[i].priority = priorities[i];
+      }
+    }
+    setProcess(processList);
+    console.log(process);
+  };
+
   return (
-    <form className="text-left">
+    <form className="text-left" onSubmit={(e) => handleSolve(e)}>
       {/* Algorithm dropdown */}
       <div className="mb-5">
         <label>Algorithm</label>
@@ -127,8 +151,8 @@ function InputForm({
       <div className="mb-5">
         <label>Arrival Time</label>
         <input
-          value={arrivalTime}
-          onChange={(e) => setArrivalTime(e.target.value)}
+          value={arrivalTime.join(" ")}
+          onChange={(e) => setArrivalTime(e.target.value.split(" ").map(Number))}
           type="text"
           placeholder="eg. 2 4 5 6 7"
           className="focus:outline-none border p-2 w-full mt-2 rounded"
@@ -139,8 +163,8 @@ function InputForm({
       <div className="mb-5">
         <label>Burst Time</label>
         <input
-          value={burstTime}
-          onChange={(e) => setBurstTime(e.target.value)}
+          value={burstTime.join(" ")}
+          onChange={(e) => setBurstTime(e.target.value.split(" ").map(Number))}
           type="text"
           placeholder="eg. 2 4 5 6 7"
           className="focus:outline-none border p-2 w-full mt-2 rounded"
@@ -154,7 +178,7 @@ function InputForm({
           <input
             type="text"
             value={timeQuantum}
-            onChange={(e) => setTimeQuantum(e.target.value)}
+            onChange={(e) => setTimeQuantum(Number(e.target.value))}
             placeholder="eg. 2"
             className="focus:outline-none border p-2 w-full mt-2 rounded"
           />
@@ -167,15 +191,18 @@ function InputForm({
           <label>Priorities</label>
           <input
             type="text"
-            value={priorities}
-            onChange={(e) => setPriorities(e.target.value)}
+            value={priorities.join(" ")}
+            onChange={(e) => setPriorities(e.target.value.split(" ").map(Number))}
             placeholder="Higher # = Higher Priority"
             className="focus:outline-none border p-2 w-full mt-2 rounded"
           />
         </div>
       )}
 
-      <button className="bg-black text-white p-2 w-full rounded-md hover:bg-stone-800 transition-all duration-200">
+      <button
+        type="submit"
+        className="bg-black text-white p-2 w-full rounded-md hover:bg-stone-800 transition-all duration-200"
+      >
         Solve
       </button>
     </form>
