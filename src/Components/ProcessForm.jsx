@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { BsDice5 } from "react-icons/bs";
 import { GoChevronDown } from "react-icons/go";
 
-export default function ProcessForm({ process, setProcess, algo, setAlgo, algorithm }) {
+export default function ProcessForm({ process, setProcess, algo, setAlgo, algorithm, timeQuantum, setTimeQuantum, priorities, setPriorities }) {
 
   const [arrivalTime, setArrivalTime] = useState([]);
   const [burstTime, setBurstTime] = useState([]);
-  const [timeQuantum, setTimeQuantum] = useState(0);
-  const [priorities, setPriorities] = useState([]);
+  
   const randomProcess = () => {
     const numProcesses = Math.floor(Math.random() * 3) + 4;
     const at = [];
@@ -193,7 +192,7 @@ function InputForm({
             type="text"
             value={priorities.join(" ")}
             onChange={(e) => setPriorities(e.target.value.split(" ").map(Number))}
-            placeholder="Higher # = Higher Priority"
+            placeholder="Lower # = Higher Priority"
             className="focus:outline-none border p-2 w-full mt-2 rounded"
           />
         </div>

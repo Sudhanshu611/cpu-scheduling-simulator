@@ -41,7 +41,9 @@ function App() {
   ];
   const [algo, setAlgo] = useState(algorithm[0]);
   const [process, setProcess] = useState([]);
-  const { metrics, gantt } = selector(algo.code, process);
+  const [timeQuantum, setTimeQuantum] = useState(0);
+  const [priorities, setPriorities] = useState([]);
+  const { metrics, gantt } = selector(algo.code, process, timeQuantum, priorities);
   return (
     <div className="font-jet">
       <h2 className="text-4xl font-bold p-3">CPU Scheduling Simulator</h2>
@@ -52,6 +54,10 @@ function App() {
           setAlgo={setAlgo}
           algo={algo}
           algorithm={algorithm}
+          timeQuantum={timeQuantum}
+          setTimeQuantum={setTimeQuantum}
+          priorities={priorities}
+          setPriorities={setPriorities}
         />
         <div className="h-full w-full rounded grid grid-cols-4 grid-rows-2 gap-4">
           <ProcessTable process={process} />
