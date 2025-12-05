@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MetricsTable() {
   return (
-    <div className="col-span-3 border w-full rounded">
+    <div className="col-span-3 border w-full rounded ">
       <table className=" border-collapse text-center w-full">
         <thead className="text-md border-b">
           <tr>

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProcessTable() {
   return (
-    <div className=" w-[300px] min-h-[350px] border p-4 rounded">
+    <div className=" w-full min-h-[350px] border p-4 rounded">
       <div className="text-left text-2xl mb-5 font-medium bg-white">Processes</div>
       <div className="flex flex-col space-y-4 items-start max-h-[350px] overflow-y-auto">
         <div className="flex items-center gap-3">
