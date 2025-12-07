@@ -1,5 +1,5 @@
 import React from "react";
-import selector from '../Algorithm/selector.js';
+import selector from "../Algorithm/selector.js";
 
 export default function MetricsTable({ metrics }) {
   return (
@@ -16,10 +16,14 @@ export default function MetricsTable({ metrics }) {
           </tr>
         </thead>
 
-        <tbody className="text-lg">
+        <tbody className="text-lg" key={metrics.length * Math.floor(Math.random() * 11)}>
           {metrics.map((m, keyIndex) => {
             return (
-              <tr key={keyIndex}>
+              <tr
+                key={keyIndex}
+                className="opacity-0 animate-[fadeIn_0.4s_ease_forwards]"
+                style={{ animationDelay: `${keyIndex * 0.15}s` }}
+              >
                 <td className="p-3">{m.pid}</td>
                 <td className="p-3">{m.arrival}</td>
                 <td className="p-3">{m.burst}</td>
