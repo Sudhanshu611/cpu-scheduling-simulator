@@ -1,16 +1,159 @@
-# React + Vite
+# CPU Scheduling Simulator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A CPU Scheduling Simulator built using React that visually demonstrates how different CPU scheduling algorithms work.
+It allows users to input processes, select a scheduling algorithm, and instantly view process tables, performance metrics, and Gantt charts.
 
-Currently, two official plugins are available:
+This project is useful for Operating Systems learning, visual understanding, and academic demonstrations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features
 
-## React Compiler
+📥 Input custom processes (Arrival Time, Burst Time, Priority)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔁 Supports multiple CPU scheduling algorithms
 
-## Expanding the ESLint configuration
+📊 Displays:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Completion Time (CT)
+
+Turnaround Time (TAT)
+
+Waiting Time (WT)
+
+📈 Visual Gantt Chart
+
+📉 Performance Metrics:
+
+Average Waiting Time
+
+Average Turnaround Time
+
+Throughput
+
+CPU Utilization
+
+⚡ Interactive and real-time updates
+
+🧠 Supported Scheduling Algorithms
+
+First Come First Serve (FCFS)
+
+Shortest Job First (SJF – Non-Preemptive)
+
+Shortest Remaining Time First (SRTF)
+
+Round Robin (RR) (with configurable time quantum)
+
+Priority Scheduling
+
+🖼️ UI Preview
+
+CPU Scheduling Simulator Interface
+
+(Add your screenshot in a screenshots/ folder and update the path if needed)
+
+🛠️ Tech Stack
+
+Frontend: React.js
+
+Styling: CSS / Tailwind CSS
+
+State Management: React Hooks (useState)
+
+Visualization: Custom Gantt Chart component
+
+Language: JavaScript (ES6)
+
+📂 Project Structure
+src/
+├── algorithms/
+│   ├── fcfs.js
+│   ├── sjf.js
+│   ├── srtf.js
+│   ├── rr.js
+│   └── priority.js
+│
+├── components/
+│   ├── ProcessForm.jsx
+│   ├── ProcessTable.jsx
+│   ├── MetricsTable.jsx
+│   ├── GanttChart.jsx
+│   └── OtherDetails.jsx
+│
+├── App.jsx
+└── index.js
+
+🚀 Getting Started
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/cpu-scheduling-simulator.git
+
+cd cpu-scheduling-simulator
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Run the Application
+npm run dev
+
+
+or
+
+npm start
+
+
+The app will run at:
+👉 http://localhost:3000
+
+🧪 How It Works
+
+Enter Arrival Time, Burst Time, and Priority (if required)
+
+Select a CPU Scheduling Algorithm
+
+Click Solve
+
+The simulator:
+
+Generates a scheduling order
+
+Calculates CT, TAT, WT
+
+Renders the Gantt Chart
+
+Displays performance metrics
+
+📊 Example Metrics
+Metric	Value
+Avg Waiting Time	3.4
+Avg Turnaround Time	8.2
+Throughput	0.21
+CPU Utilization	100%
+🎯 Learning Outcomes
+
+Understand CPU scheduling algorithms visually
+
+Learn how preemptive and non-preemptive scheduling differ
+
+Improve understanding of OS performance metrics
+
+Practice React component architecture and state flow
+
+🧩 Future Enhancements
+
+⏱ Adjustable time quantum UI for Round Robin
+
+📱 Responsive mobile layout
+
+📄 Export results as PDF
+
+🎨 Animated Gantt chart
+
+🧠 Step-by-step execution mode
+
+🤝 Contributing
+
+Contributions are welcome!
+Feel free to fork the repository and submit a pull request.
+
+📜 License
+
+This project is licensed under the MIT License.
