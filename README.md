@@ -5,6 +5,8 @@ It allows users to input processes, select a scheduling algorithm, and instantly
 
 This project is useful for Operating Systems learning, visual understanding, and academic demonstrations.
 
+- Deploy Link: https://cpu-scheduling-simulator-m4n6.onrender.com/
+
 # Features
 
 📥 Input custom processes (Arrival Time, Burst Time, Priority)
@@ -56,40 +58,27 @@ This project is useful for Operating Systems learning, visual understanding, and
 
 - Language: JavaScript (ES6)
 
-# Project Structure
-
-`src/
-├── algorithms/
-│   ├── fcfs.js
-│   ├── sjf.js
-│   ├── srtf.js
-│   ├── rr.js
-│   └── priority.js
-│
-├── components/
-│   ├── ProcessForm.jsx
-│   ├── ProcessTable.jsx
-│   ├── MetricsTable.jsx
-│   ├── GanttChart.jsx
-│   └── OtherDetails.jsx
-│
-├── App.jsx
-└── index.js`
 
 # Getting Started
 1️⃣ Clone the Repository
+
 `
 git clone https://github.com/Sudhanshu611/cpu-scheduling-simulator.git
 `
+
 `
 cd cpu-scheduling-simulator
 `
 
+
 2️⃣ Install Dependencies
+
 `
 npm install
 `
+
 3️⃣ Run the Application
+
 `
 npm run dev
 `
