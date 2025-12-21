@@ -11,60 +11,54 @@ This project is useful for Operating Systems learning, visual understanding, and
 
 🔁 Supports multiple CPU scheduling algorithms
 
-📊 Displays:
+# Displays:
 
-Completion Time (CT)
+- Completion Time (CT)
 
-Turnaround Time (TAT)
+- Turnaround Time (TAT)
 
-Waiting Time (WT)
+- Waiting Time (WT)
 
-📈 Visual Gantt Chart
+- Visual Gantt Chart
 
-📉 Performance Metrics:
+- Performance Metrics:
 
-Average Waiting Time
+- Average Waiting Time
 
-Average Turnaround Time
+- Average Turnaround Time
 
-Throughput
+- Throughput
 
-CPU Utilization
+- CPU Utilization
 
-⚡ Interactive and real-time updates
+# Supported Scheduling Algorithms
 
-🧠 Supported Scheduling Algorithms
+- First Come First Serve (FCFS)
 
-First Come First Serve (FCFS)
+- Shortest Job First (SJF – Non-Preemptive)
 
-Shortest Job First (SJF – Non-Preemptive)
+- Shortest Remaining Time First (SRTF)
 
-Shortest Remaining Time First (SRTF)
+- Round Robin (RR) (with configurable time quantum)
 
-Round Robin (RR) (with configurable time quantum)
+- Priority Scheduling
 
-Priority Scheduling
-
-🖼️ UI Preview
-
-CPU Scheduling Simulator Interface
-
-(Add your screenshot in a screenshots/ folder and update the path if needed)
 
 🛠️ Tech Stack
 
-Frontend: React.js
+- Frontend: React.js
 
-Styling: CSS / Tailwind CSS
+- Styling: CSS / Tailwind CSS
 
-State Management: React Hooks (useState)
+- State Management: React Hooks (useState)
 
-Visualization: Custom Gantt Chart component
+- Visualization: Custom Gantt Chart component
 
-Language: JavaScript (ES6)
+- Language: JavaScript (ES6)
 
-📂 Project Structure
-src/
+# Project Structure
+
+`src/
 ├── algorithms/
 │   ├── fcfs.js
 │   ├── sjf.js
@@ -80,38 +74,44 @@ src/
 │   └── OtherDetails.jsx
 │
 ├── App.jsx
-└── index.js
+└── index.js`
 
-🚀 Getting Started
+# Getting Started
 1️⃣ Clone the Repository
-git clone https://github.com/your-username/cpu-scheduling-simulator.git
-
+`
+git clone https://github.com/Sudhanshu611/cpu-scheduling-simulator.git
+`
+`
 cd cpu-scheduling-simulator
+`
 
 2️⃣ Install Dependencies
+`
 npm install
-
+`
 3️⃣ Run the Application
+`
 npm run dev
-
+`
 
 or
 
+`
 npm start
-
+`
 
 The app will run at:
-👉 http://localhost:3000
+👉 http://localhost:5173
 
-🧪 How It Works
+# How It Works
 
-Enter Arrival Time, Burst Time, and Priority (if required)
+- Enter Arrival Time, Burst Time, and Priority (if required)
 
-Select a CPU Scheduling Algorithm
+- Select a CPU Scheduling Algorithm
 
-Click Solve
+- Click Solve
 
-The simulator:
+- The simulator:
 
 Generates a scheduling order
 
@@ -121,39 +121,21 @@ Renders the Gantt Chart
 
 Displays performance metrics
 
-📊 Example Metrics
-Metric	Value
-Avg Waiting Time	3.4
-Avg Turnaround Time	8.2
-Throughput	0.21
-CPU Utilization	100%
-🎯 Learning Outcomes
 
-Understand CPU scheduling algorithms visually
+# Learning Outcomes
 
-Learn how preemptive and non-preemptive scheduling differ
+- Understand CPU scheduling algorithms visually
 
-Improve understanding of OS performance metrics
+- Learn how preemptive and non-preemptive scheduling differ
 
-Practice React component architecture and state flow
+- Improve understanding of OS performance metrics
 
-🧩 Future Enhancements
+- Practice React component architecture and state flow
 
-⏱ Adjustable time quantum UI for Round Robin
 
-📱 Responsive mobile layout
+## Contributions are welcome!
+## Feel free to fork the repository and submit a pull request.
 
-📄 Export results as PDF
-
-🎨 Animated Gantt chart
-
-🧠 Step-by-step execution mode
-
-🤝 Contributing
-
-Contributions are welcome!
-Feel free to fork the repository and submit a pull request.
-
-📜 License
+# License
 
 This project is licensed under the MIT License.
